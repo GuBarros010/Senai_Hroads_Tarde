@@ -1,0 +1,41 @@
+CREATE DATABASE HROADS;
+GO
+
+USE HROADS;
+GO
+
+CREATE TABLE Classe(
+ idClasse TINYINT PRIMARY KEY IDENTITY(1,1),
+ nomeClasse VARCHAR(25) NOT NULL 
+);
+
+CREATE TABLE TipoHabilidade(
+ idTipoHabilidade TINYINT PRIMARY KEY IDENTITY(1,1),
+ nomeTipo VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE Habilidade(
+ idHabilidade TINYINT PRIMARY KEY IDENTITY(1,1),
+ idTipoHabilidade TINYINT FOREIGN KEY REFERENCES TipoHabilidade(idTipoHabilidade),
+ nomeHabilidade VARCHAR(20) NOT NULL
+);
+
+
+CREATE TABLE ClassesHabilidades(
+ idClassesHabilidades TINYINT PRIMARY KEY IDENTITY(1,1),
+ idHabilidade TINYINT FOREIGN KEY REFERENCES Habilidade(idHabilidade),
+ idClasse TINYINT FOREIGN KEY REFERENCES Classe(idClasse),
+);
+
+CREATE TABLE Personagem(
+ idPersonagem TINYINT PRIMARY KEY IDENTITY(1,1),
+ nomePersonagem VARCHAR(20) NOT NULL,
+ idClasse TINYINT FOREIGN KEY REFERENCES Classe(idClasse),
+ Vida TINYINT NOT NULL,
+ Mana TINYINT NOT NULL,
+ dataCriacao DATETIME,
+ dataAtualizacao DATETIME
+);
+
+
+DROP DATABASE HROADS
