@@ -22,6 +22,9 @@ SELECT * FROM ClassesHabilidades
 --Tarefa 6: Selecionar todos os personagens;
 SELECT * FROM Personagem
 
+SELECT * FROM Usuario
+
+SELECT * FROM TipoUsuario
 
 --Tarefas
 

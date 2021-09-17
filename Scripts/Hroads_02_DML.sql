@@ -40,6 +40,15 @@ VALUES ('DeuBug', 1, 100, 80, '17/03/2016', '10/08/2021'),
 	   ('Fer8', 7, 75, 60, '17/03/2016', '10/08/2021')
 GO
 
+INSERT INTO TipoUsuario(Titulo)
+VALUES ('Administrador'),
+       ('Jogador')
+GO
+
+INSERT INTO Usuario(idTipoUsuario, Email, Senha)
+VALUES (2,'jogador@gmail.com', 'jogador132'),
+       (1,'admin@gmail.com', 'admin132')
+GO
 
 --Tarefa 4: Atualizar o nome do personagem Fer8 para Fer7;
 UPDATE Personagem SET nomePersonagem = 'Fer7'

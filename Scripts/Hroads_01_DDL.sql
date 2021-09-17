@@ -6,18 +6,30 @@ GO
 
 CREATE TABLE Classe(
  idClasse TINYINT PRIMARY KEY IDENTITY(1,1),
- nomeClasse VARCHAR(25) NOT NULL 
+ nomeClasse VARCHAR(40) NOT NULL 
+);
+
+CREATE TABLE TipoUsuario(
+ idTipoUsuario TINYINT PRIMARY KEY IDENTITY(1,1),
+ Titulo VARCHAR(40) NOT NULL 
+);
+
+CREATE TABLE Usuario(
+ idUsuario TINYINT PRIMARY KEY IDENTITY,
+ idTipoUsuario TINYINT FOREIGN KEY REFERENCES TipoUsuario(idTipoUsuario),
+ Email VARCHAR(100),
+ Senha CHAR(10)
 );
 
 CREATE TABLE TipoHabilidade(
  idTipoHabilidade TINYINT PRIMARY KEY IDENTITY(1,1),
- nomeTipo VARCHAR(20) NOT NULL
+ nomeTipo VARCHAR(40) NOT NULL
 );
 
 CREATE TABLE Habilidade(
  idHabilidade TINYINT PRIMARY KEY IDENTITY(1,1),
  idTipoHabilidade TINYINT FOREIGN KEY REFERENCES TipoHabilidade(idTipoHabilidade),
- nomeHabilidade VARCHAR(20) NOT NULL
+ nomeHabilidade VARCHAR(40) NOT NULL
 );
 
 
@@ -29,7 +41,7 @@ CREATE TABLE ClassesHabilidades(
 
 CREATE TABLE Personagem(
  idPersonagem TINYINT PRIMARY KEY IDENTITY(1,1),
- nomePersonagem VARCHAR(20) NOT NULL,
+ nomePersonagem VARCHAR(40) NOT NULL,
  idClasse TINYINT FOREIGN KEY REFERENCES Classe(idClasse),
  Vida TINYINT NOT NULL,
  Mana TINYINT NOT NULL,
